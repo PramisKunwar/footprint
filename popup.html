@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Footprint</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="card">
+        <h1>CarbonBrowse</h1>
+        <p class="subtitle">Internet Carbon Footprint Tracker</p>
+
+        <div class="results">
+            <div class="stat">
+                <span class="label">Page Size</span>
+                <span class="value" id="pageSize">Loading...</span>
+            </div>
+            <div class="stat">
+                <span class="label">Estimated CO₂</span>
+                <span class="value" id="co2">Loading...</span>
+            </div>
+        </div>
+
+        <div class="impact" id="impact"></div>
+
+        <p class="eco-message">
+            Small changes in browsing can reduce your digital carbon footprint
+        </p>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
