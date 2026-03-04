@@ -11,11 +11,32 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    // Show loading state
+    document.getElementById("pageSize").textContent = "Loading...";
+    document.getElementById("co2").textContent = "Loading...";
+
+    // Set a timeout for the message
+    let timeoutId = setTimeout(() => {
+      showError("Request timed out. Try refreshing the page.");
+    }, 3000); // 3 second timeout
+
     // Send a message to the content script running on that tab
     chrome.tabs.sendMessage(tab.id, { action: "getPageSize" }, (response) => {
-      if (chrome.runtime.lastError || !response) {
-        // Content script might not be injected (e.g., chrome:// pages)
+      clearTimeout(timeoutId); // Clear the timeout
+      
+      if (chrome.runtime.lastError) {
+        console.error("Runtime error:", chrome.runtime.lastError);
         showError("Cannot analyze this page.");
+        return;
+      }
+
+      if (!response) {
+        showError("No response from page.");
+        return;
+      }
+
+      if (!response.success) {
+        showError("Analysis failed: " + (response.error || "Unknown error"));
         return;
       }
 
