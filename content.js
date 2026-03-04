@@ -19,13 +19,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   return true; // Keep the message channel open for async response
 });
 
-/**
- * Calculate the total page size in MB.
- * 
- * Strategy:
- * 1. Try using Performance API (most accurate)
- * 2. Fallback to estimating from HTML length with better byte calculation
- */
 function calculatePageSize() {
   let totalBytes = 0;
 
@@ -78,11 +71,7 @@ function calculatePageSize() {
   return sizeMB;
 }
 
-/**
- * Calculate the actual byte size of a string (handles multi-byte characters)
- */
 function getStringByteSize(str) {
-  // Returns the byte size of a UTF-16 string
-  // Each character is 2 bytes in JavaScript's internal representation
+
   return str.length * 2;
 }

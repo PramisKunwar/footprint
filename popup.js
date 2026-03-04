@@ -54,9 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-/**
- * Show a color-coded impact message based on CO₂ amount
- */
 function showImpact(co2) {
   const el = document.getElementById("impact");
 
@@ -72,9 +69,6 @@ function showImpact(co2) {
   }
 }
 
-/**
- * Show an error message when the page can't be analyzed
- */
 function showError(message) {
   document.getElementById("pageSize").textContent = "N/A";
   document.getElementById("co2").textContent = "N/A";
